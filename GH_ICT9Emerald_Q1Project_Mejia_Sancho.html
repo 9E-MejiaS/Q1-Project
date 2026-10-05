@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q1 Project</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f0e6;
+            color: #3f3428;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6f4e37, #a67b5b, #d8b596);
+            color: #fffaf2;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto 12px;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+        }
+
+        header h1 {
+            margin: 10px 0 5px;
+            font-size: 2.4rem;
+        }
+
+        header p {
+            max-width: 650px;
+            margin: auto;
+            font-size: 1.05rem;
+        }
+
+        nav {
+            background-color: #4e3426;
+            text-align: center;
+            padding: 13px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav a {
+            color: #fffaf2;
+            text-decoration: none;
+            margin: 0 13px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #f3d7a6;
+        }
+
+        main {
+            width: min(1000px, 90%);
+            margin: 35px auto;
+        }
+
+        section {
+            background-color: #fffdf8;
+            margin-bottom: 25px;
+            padding: 28px;
+            border-radius: 15px;
+            box-shadow: 0 4px 14px rgba(78, 52, 38, 0.14);
+        }
+
+        h2 {
+            color: #795548;
+            border-bottom: 3px solid #dec5a5;
+            padding-bottom: 8px;
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .profile-picture {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 5px solid #ead8be;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .highlight {
+            color: #a84b2a;
+            font-weight: bold;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #f7ead9;
+            border-left: 6px solid #a67b5b;
+            border-radius: 10px;
+            padding: 18px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #6f4e37;
+        }
+
+        dl dt {
+            color: #6f4e37;
+            font-weight: bold;
+            margin-top: 12px;
+        }
+
+        dl dd {
+            margin-left: 20px;
+        }
+
+        .project-row {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            padding: 22px 0;
+            border-bottom: 2px solid #ead8be;
+            flex-wrap: wrap;
+        }
+
+        .project-row:last-of-type {
+            border-bottom: none;
+        }
+
+        .project-image img {
+            width: 280px;
+            height: 170px;
+            max-width: 100%;
+            object-fit: cover;
+            border: 4px solid #ead8be;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .project-info {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .project-info h3 {
+            color: #6f4e37;
+            margin-top: 0;
+        }
+
+        .project-info a {
+            color: #8b5e3c;
+            font-weight: bold;
+        }
+
+        .project-info a:hover {
+            color: #a84b2a;
+        }
+
+        .repository-link {
+            display: inline-block;
+            background-color: #8b5e3c;
+            color: #fffaf2;
+            text-decoration: none;
+            padding: 11px 17px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .repository-link:hover {
+            background-color: #6f4e37;
+        }
+
+        form {
+            display: grid;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input,
+        select,
+        textarea {
+            padding: 11px;
+            font-size: 1rem;
+            border: 1px solid #c9a77d;
+            border-radius: 7px;
+            background-color: #fffdf8;
+            color: #3f3428;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: 2px solid #d1a673;
+            border-color: #a67b5b;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #7a5a3a;
+            color: #fffaf2;
+            border: none;
+            padding: 13px 18px;
+            border-radius: 7px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #5f422b;
+        }
+
+        footer {
+            background-color: #4e3426;
+            color: #fffaf2;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px 8px;
+            }
+
+            .project-image img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="#home">
+            <img class="logo" src="Vitto Mejia.png" alt="My logo">
+        </a>
+
+        <h1>Vitto Mejia's Personal Portfolio</h1>
+
+        <p>
+            Hello! I am <span class="highlight">Vitto Mejia!</span>, a student who enjoys
+            technology, gaming, and crafting.
+        </p>
+    </header>
+
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#showcase">Showcase</a>
+        <a href="#skills">Previous Work</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <main id="home">
+        <section id="about">
+            <h2>About Me</h2>
+
+            <div class="about-container">
+                <img class="profile-picture" src="vitto mejia.jpg" alt="Profile picture of Vitto Mejia">
+
+                <div class="about-text">
+                    <p>
+                        I am a student interested in computers, gaming, digital creativity, and web design.
+                        I have been exploring how websites work and using HTML and CSS to make organized and
+                        eye catching pages.
+                    </p>
+
+                    <p>
+                        My goal is to improve my skills in <span class="highlight">coding</span>, design,
+                        and problem-solving. I also like working on Minecraft and Roblox projects, school
+                        activities, and other technology/creativity-related tasks.
+                    </p>
+
+                    <p style="color: #8b5e3c; font-style: italic; font-weight: bold;">
+                        I remember a quote from a person I admire;“Learning to code is learning how to create.”
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="showcase">
+            <h2>My Showcased Pages and Projects</h2>
+
+            <div class="showcase-grid">
+                <div class="card">
+                    <h3>Unordered List</h3>
+                    <p>My favorite digital activities:</p>
+
+                    <ul>
+                        <li>Playing Minecraft</li>
+                        <li>Exploring Roblox games</li>
+                        <li>Editing digital content</li>
+                        <li>Crafting props</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Ordered List</h3>
+                    <p>My crafting process step by step:</p>
+
+                    <ol>
+                        <li>Plan the what item/prop</li>
+                        <li>Get the appropriate materials</li>
+                        <li>Put together these materials</li>
+                        <li>Test if it's sturdy, if yes then reinforce</li>
+                        <li>Design it/make it look nice</li>
+                    </ol>
+                </div>
+
+                <div class="card">
+                    <h3>Description List</h3>
+
+                    <dl>
+                        <dt>Crafting</dt>
+                        <dd>The process of making or creating something skillfully.</dd>
+
+                        <dt>Gaming</dt>
+                        <dd>The activity of playing games, especially video games on a computer, console, or mobile device.</dd>
+                        <dt>Coding</dt>
+                        <dd>The process of writing instructions in a programming language so a computer can perform specific tasks.</dd>
+                    </dl>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>My Skills and Previous Work</h2>
+
+            <div class="project-row">
+                <div class="project-image">
+                    <img src="drill2.png" alt="Preview of my Drill 2">
+                </div>
+
+                <div class="project-info">
+                    <h3>My Drill 2</h3>
+
+                    <ul>
+                        <li>HTML and CSS project</li>
+                        <li>Personal portfolio design</li>
+                        <li>Lists, links, and images</li>
+                        <li>
+                            <a href="GH_ICT9Emmerald_Q1Drill2_Mejia_Sancho.html" target="_blank">
+                                View Drill 2 Page
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="project-row">
+                <div class="project-image">
+                    <img src="sw1.png" alt="Preview of my Seatwork 1 project">
+                </div>
+
+                <div class="project-info">
+                    <h3>My Seatwork 1 Project</h3>
+
+                    <ul>
+                        <li>HTML and CSS project</li>
+                        <li>HTML forms</li>
+                        <li>Text formatting and page layout</li>
+                        <li>
+                            <a href="Seatwork%201.html" target="_blank">
+                                View Seatwork 1 Page
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <p>You may also visit the online repository:</p>
+
+            <a class="repository-link" href="https://github.com/" target="_blank">
+                View GitHub Repository
+            </a>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+
+            <p>
+                Fill out this form if you would like to contact me about school projects,
+                technology, gaming, or web design.
+            </p>
+
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="interest">What are you interested in?</label>
+
+                    <select id="interest" name="interest">
+                        <option value="web-design">Web Design</option>
+                        <option value="gaming">Gaming</option>
+                        <option value="technology">Technology</option>
+                        <option value="school-project">School Project</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="feedback">Feedback or Message:</label>
+                    <textarea id="feedback" name="feedback" placeholder="Write your message here..."></textarea>
+                </div>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 Sancho Vitto P. Mejia | ICT 9 First Quarter Project</p>
+    </footer>
+</body>
+</html>
